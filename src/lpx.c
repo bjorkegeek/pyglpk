@@ -1106,9 +1106,11 @@ void lpx_set_int_parm(LPX *lp, int parm, int val)
          case LPX_K_ITLIM:
             cps->it_lim = val;
             break;
+#if GLPK_VERSION(4, 53)
          case LPX_K_ITCNT:
             glp_set_it_cnt(lp, val);
             break;
+#endif
          case LPX_K_OUTFRQ:
             if (!(val > 0))
                xerror("lpx_set_int_parm: OUTFRQ = %d; invalid value\n",
@@ -1228,8 +1230,10 @@ int lpx_get_int_parm(LPX *lp, int parm)
             val = cps->round; break;
          case LPX_K_ITLIM:
             val = cps->it_lim; break;
+#if GLPK_VERSION(4, 53)
          case LPX_K_ITCNT:
             val = glp_get_it_cnt(lp); break;
+#endif
          case LPX_K_OUTFRQ:
             val = cps->out_frq; break;
          case LPX_K_BRANCH:
