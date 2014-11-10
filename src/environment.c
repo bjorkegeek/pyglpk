@@ -71,12 +71,15 @@ static PyObject* Environment_getblocks_peak(EnvironmentObject *self,
   return PyInt_FromLong(cpeak);
 }
 
-#if GLPK_VERSION(4,28)
+#if GLPK_VERSION(4,48)
+#define GLP_LONG size_t
+#elif GLPK_VERSION(4,28)
 #define GLP_LONG glp_long
 #else
 #define GLP_LONG glp_ulong
 #endif
 
+#if !GLPK_VERSION(4,48)
 static PyObject* long2py(GLP_LONG l) {
   if ((l.hi==0 && l.lo>=0) || (l.hi==-1 && l.lo<0))
     return PyInt_FromLong(l.lo);
@@ -85,6 +88,9 @@ static PyObject* long2py(GLP_LONG l) {
   ll |= (unsigned int)l.lo;
   return PyLong_FromLongLong(ll);
 }
+#else
+#define long2py(x) PyLong_FromSize_t(x)
+#endif
 
 static PyObject* Environment_getbytes(EnvironmentObject *self,void *closure) {
   GLP_LONG b;

@@ -22,7 +22,7 @@ along with PyGLPK.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Python.h>
 #include "glpk.h"
-
+#include "lpx.h"
 #define LPX_Check(op) PyObject_TypeCheck(op, &LPXType)
 
 typedef struct {

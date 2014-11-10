@@ -1,6 +1,7 @@
                                  PyGLPK Readme
 
    Copyright (c) 2007, 2008, Thomas W. Finley
+   Copyright (c) 2014, David Björkevik
 
 Overview
 
@@ -23,7 +24,7 @@ Overview
 Availability
 
    To get the lastest version, see:
-   http://tfinley.net/software/pyglpk/
+   https://github.com/bjorkegeek/pyglpk
 
 Documentation
 
@@ -37,6 +38,8 @@ Building and Installing
    or later and GMP libraries. The module builds and appears to work on my
    test files in Python 2.4, and 2.5, with GLPK 4.18 through 4.31. Earlier
    versions of Python and GLPK will not work.
+   This module has been updated by David Björkevik in 2014 to support
+   GLPK versions after 4.48.
 
    Ideally, the following will work:
 
